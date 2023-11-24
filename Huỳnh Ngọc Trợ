@@ -1,0 +1,120 @@
+Bài 5 
+                Console.OutputEncoding = Encoding.UTF8;
+                string Ten ;
+                Console.Write("Nhập Họ và Tên: ");
+                Ten = Convert.ToString(Console.ReadLine());
+                Console.WriteLine("Điểm Trung bình");
+                double DTB;
+                DTB = Convert.ToDouble(Console.ReadLine());
+                string ketqua = DTB >= 9.0 ? "Xuất sắc" 
+                    : DTB >= 8 && DTB < 9 ? "Giỏi" 
+                    : DTB >= 6.5 && DTB < 8 ? "Khá" 
+                    : DTB >=5 && DTB < 6.5 ? "Trung Bình"
+                    : DTB >= 3.5 && DTB < 5 ? "Yếu" : "kém";
+                Console.WriteLine("Sinh viên {0}  , Điểm trung bình là  {1} ,Xếp loại {2}", Ten,  DTB, ketqua);
+                Console.ReadLine();
+Bài 6
+
+ static void Main(string[] args)
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            const int GiaBac1 = 1484;
+            const int GiaBac2 = 1533;
+            const int GiaBac3 = 1786;
+            const int GiaBac4 = 2242;
+            const int GiaBac5 = 2503;
+            const int GiaBac6 = 2587;
+            const double ThueGTGT = 0.1;
+
+            Console.Write("Nhập chỉ số điện : ");
+            int p = int.Parse(Console.ReadLine());
+
+            double t = 0;
+
+            if (p <= 50)
+            {
+                t = p * GiaBac1;
+            }
+            else if (p <= 100)
+            {
+                t = (50 * GiaBac1) + ((p - 50) * GiaBac2);
+            }
+            else if (p <= 200)
+            {
+                t = (50 * GiaBac1) + (50 * GiaBac2) + ((p - 100) * GiaBac3);
+            }
+            else if (p <= 300)
+            {
+                t = (50 * GiaBac1) + (50 * GiaBac2) + (100 * GiaBac3) + ((p - 200) * GiaBac4);
+            }
+            else if (p <= 400)
+            {
+                t = (50 * GiaBac1) + (50 * GiaBac2) + (100 * GiaBac3) + (100 * GiaBac4) + ((p - 300) * GiaBac5);
+            }
+            else if (p > 401)
+            {
+                t = (50 * GiaBac1) + (50 * GiaBac2) + (100 * GiaBac3) + (100 * GiaBac4) + (100 * GiaBac5) + ((p - 400) * GiaBac6);
+            }
+            else
+            {
+                Console.WriteLine("Chỉ số điện không hợp lệ!");
+                return;
+            }
+
+            double tienGTGT = t * ThueGTGT;
+            double tongTien = t + tienGTGT;
+
+            Console.WriteLine("Tổng tiền điện: {0} VNĐ", tongTien);
+        }
+    }
+
+Bài 7
+
+static void DoiTien(int t)
+        {
+            int count500 = 0;
+            int count200 = 0;
+            int count100 = 0;
+            int count50 = 0;
+
+            if (t >= 500000)
+            {
+                count500 = t / 500000;
+                t %= 500000;
+                if (count500 >= 1)
+                { Console.Write(" {0} tờ 500 ,", count500); }
+            }
+            if (t >= 200000)
+            {
+                count200 = t / 200000;
+                t %= 200000;
+                if (count200 >= 1)
+                { Console.Write(" {0} tờ 200 ,", count200); }
+            }
+            if (t >= 100000)
+            {
+                count100 = t / 100000;
+                t %= 100000;
+                if (count100 >= 1)
+                { Console.Write(" {0} tờ 100 ,", count100); }
+            }
+            if (t >= 50000)
+            {
+                count50 = t / 50000;
+                if (count50 >= 1)
+                { Console.Write(" {0} tờ 50 .", count50); }
+            }
+            Console.ReadLine();
+        }
+
+        static void Main(string[] args)
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+
+            // Đổi tiền
+            Console.Write("Nhập số tiền t: ");
+            int t = int.Parse(Console.ReadLine());
+            Console.Write("  Xuất {0} =", t);
+            DoiTien(t);
+        }
+    }
